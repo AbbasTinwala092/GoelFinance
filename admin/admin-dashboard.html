@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Admin - Goel Financial Services</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="../assets/img/favicon.jpg" rel="icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../assets/css/main.css" rel="stylesheet">
+
+
+
+    <style>
+        /* Additional styles for the popup form */
+        .popup-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <!-- Header -->
+    <header id="header" class="header d-flex align-items-center">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+            <a href="../admin/admin-dashboard.html" class="logo d-flex align-items-center">
+                <img src="../assets/img/logo.png" alt="">
+                <h1>Goel&nbsp;</h1>
+                <h4>Financial Services</h4>
+            </a>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a href="../admin/admin-dashboard.html">Dashboard</a></li>
+                    <li><a href="../admin/admin-dashboard.html#client">Clients</a></li>
+                    <li><a href="../admin/admin-dashboard.html#sip">SIP Reports</a></li>
+                    <li><a href="../admin/admin.html">Logout</a></li>
+                    <!-- Add more navigation links as needed -->
+                </ul>
+            </nav>
+            <!-- Mobile Navigation Toggle Icons -->
+            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+        </div>
+    </header>
+
+
+
+    <!-- Client Content -->
+    <section id="dashboard" class="client-content">
+
+        <div class="container">
+            <h1>List of Clients</h1>
+            <div class="clients">
+
+                <ul class="client-list">
+                    <!-- Client list items will be added dynamically using JavaScript -->
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Mobile No.</th>
+                                <th>PAN</th>
+                                <th>DOB</th>
+                                <th>Income</th>
+                                <th>Occupation</th>
+                                <th>Address</th>
+                        </thead>
+                        <tbody id="clientList">
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+
+
+
+                </ul>
+
+            </div>
+
+            <button id="addClientBtn" class="btn btn-primary">Add Client</button>
+        </div>
+    </section>
+
+    <div id="addClientPopup" class="popup-form">
+        <form id="addClientForm">
+            <div class="mb-3">
+                <label for="clientName">Name:</label>
+                <input type="text" id="clientName" name="clientName" required>
+            </div>
+            <div class="mb-3">
+                <label for="clientEmail">Email:</label>
+                <input type="email" id="clientEmail" name="clientEmail" required>
+            </div>
+            <div class="mb-3">
+                <label for="clientMobile">Mobile Number:</label>
+                <input type="tel" id="clientMobile" name="clientMobile" required>
+            </div>
+            <div class="mb-3">
+                <label for="clientAge">Age:</label>
+                <input type="number" id="clientAge" name="clientAge" required>
+            </div>
+            <div class="mb-3">
+                <label for="clientDob">Date of Birth:</label>
+                <input type="date" id="clientDob" name="clientDob" required>
+            </div>
+            <div class="mb-3">
+                <label for="clientPan">PAN Number:</label>
+                <input type="text" id="clientPan" name="clientPan" required>
+            </div>
+            <div class="mb-3">
+                <label for="clientIncome">Income:</label>
+                <input type="number" id="clientIncome" name="clientIncome" required>
+            </div>
+            <div class="mb-3">
+                <label for="clientAddress">Address:</label>
+                <textarea id="clientAddress" name="clientAddress" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="clientOccupation">Occupation:</label>
+                <input type="text" id="clientOccupation" name="clientOccupation" required>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="button" id="cancelAddClientBtn" class="btn btn-secondary">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+
+
+    <!-- SIP Content -->
+    <section id="sip" class="sip-content">
+        <div class="container">
+            <h1>SIP Reports</h1>
+
+            <div class="sip">
+
+                <ul id="" class="sip-list">
+                    <!-- SIP list items will be added dynamically using JavaScript -->
+
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>SIP ID</th>
+                                <th>Fund name</th>
+                                <th>Amount</th>
+                                <th>Cap Fund</th>
+                                <th>Start Date</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sipList">
+
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                </ul>
+
+            </div>
+
+            <button id="addSIPBtn" class="btn btn-primary">Add SIP</button>
+
+        </div>
+    </section>
+    <div id="addSIPPopup" class="popup-form">
+        <form id="addSIPForm">
+            <div class="form-group">
+                <div class="mb-3">
+                    <label for="clients">Clients:</label>
+                    <select id='clientDropdown' class="" aria-label=".form-select-sm example" id="clients">
+                        
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="clientName" value="TATA">Fund Name:</label>
+                    <input id="fundName" type="text" name="clientName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="clientPan" value=500>Amount:</label>
+                    <input type="number" id="amount" name="clientPan" required>
+                </div>
+                <div class="mb-3">
+                    <label for="Mutual Fund" value="Small">Cap Fund:</label>
+                    <input type="text" id="capFund" name="mutualfund" required>
+                </div>
+                <div class="mb-3">
+                    <label for="sipAmount" value="10/10/2023">Start Date:</label>
+                    <input type="date" id="startDate" name="sipAmount" required>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" id="cancelAddSipBtn" class="btn btn-secondary">Cancel</button>
+                </div>
+        </form>
+    </div>
+
+
+
+
+    <!-- JavaScript files -->
+    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="admin-dashboard.js"></script>
+</body>
+
+</html>
